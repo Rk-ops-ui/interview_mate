@@ -1,0 +1,123 @@
+# =========================
+# Environment & secrets
+# =========================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# =========================
+# Python backend
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# =========================
+# ML models & downloaded data
+# =========================
+models/
+model_cache/
+.cache/
+huggingface/
+sentence_transformers/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.h5
+*.keras
+
+# Datasets and generated artifacts
+data/
+datasets/
+uploads/
+recordings/
+audio/
+*.wav
+*.mp3
+*.m4a
+*.webm
+*.ogg
+
+# =========================
+# Node / React / Vite frontend
+# =========================
+node_modules/
+dist/
+.vite/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# =========================
+# IDE / editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs & temporary files
+# =========================
+*.log
+logs/
+tmp/
+temp/
+
+# =========================
+# Docker / local deployment
+# =========================
+.docker/
+docker-compose.override.yml
+
+# =========================
+# Local database exports
+# =========================
+*.sql.gz
+*.dump
+*.bak
+*.sqlite
+*.sqlite3

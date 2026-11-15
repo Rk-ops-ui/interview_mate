@@ -1,0 +1,30 @@
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Data validation and environment configuration
+pydantic
+python-dotenv
+
+# PDF resume processing
+PyMuPDF
+
+# LangChain agent, prompts, OpenAI-compatible client, and LiteLLM
+langchain
+langchain-core
+langchain-openai
+litellm[proxy]
+
+# Web search and crawling
+firecrawl-py
+crawl4ai
+
+# MySQL connectivity
+mysql-connector-python
+
+# Speech-to-text
+faster-whisper
+
+# Sentence embeddings and similarity evaluation
+sentence-transformers
+scikit-learn
