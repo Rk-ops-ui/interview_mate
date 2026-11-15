@@ -379,18 +379,3 @@ Configure secrets as Cloud Run environment variables or Secret Manager reference
 - Configure request timeouts and concurrency for audio transcription and resume processing.
 - Test the complete resume upload → question retrieval → audio submission → interview completion flow after deployment.
 
-## Security notes
-
-Do not commit or publish:
-- `.env` files with real credentials.
-- `node_modules/`, `venv/`, `.venv/`, or `__pycache__/`.
-- Private resumes, audio recordings, or database exports.
-- Downloaded model weights unless intentionally distributing them.
-
-Commit dependency manifests (`requirements.txt`, `package.json`, and `package-lock.json`) so environments can be recreated.
-
-If a secret was committed to Git, deleting it in a later commit is not enough. Rotate the credential and clean the repository history if necessary.
-
-## License
-
-Add the license that applies to this repository before publishing the project publicly.
