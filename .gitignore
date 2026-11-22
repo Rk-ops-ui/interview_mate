@@ -65,10 +65,11 @@ sentence_transformers/
 *.keras
 
 # Datasets and generated artifacts
-data/
+books/
 datasets/
 uploads/
 recordings/
+uploaded_pdfs/
 audio/
 *.wav
 *.mp3

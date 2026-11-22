@@ -2,29 +2,33 @@ fastapi
 uvicorn[standard]
 python-multipart
 
-# Data validation and environment configuration
+# Configuration and validation
 pydantic
 python-dotenv
 
-# PDF resume processing
+# Resume / PDF processing
 PyMuPDF
 
-# LangChain agent, prompts, OpenAI-compatible client, and LiteLLM
+# LangChain + Gemini
 langchain
 langchain-core
-langchain-openai
-litellm[proxy]
+langchain-google-genai
 
-# Web search and crawling
-firecrawl-py
-crawl4ai
+# Hugging Face embeddings and summarization (BART)
+langchain-huggingface
+sentence-transformers
+transformers
+torch
 
-# MySQL connectivity
-mysql-connector-python
+# Vector database
+pinecone
+langchain-pinecone
 
 # Speech-to-text
 faster-whisper
 
-# Sentence embeddings and similarity evaluation
-sentence-transformers
+# Similarity / evaluation utilities
 scikit-learn
+
+# MySQL connectivity
+mysql-connector-python

@@ -1,12 +1,13 @@
 from fastapi import FastAPI,File,UploadFile,status,HTTPException,Form
 import os,shutil
 import uuid
-from project_main import main,get_next_question,save_candidate_response,speech_to_text
+from project_main import get_next_question,save_candidate_response,speech_to_text,main,evaluate_candidate_response,clear_database
 from fastapi.middleware.cors import CORSMiddleware
-
+import json
+from pydantic import BaseModel
 app = FastAPI(title='Ai based interview agent')
 
-
+import tempfile
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173","https://lgjwfg86-5173.inc1.devtunnels.ms"],
@@ -18,7 +19,10 @@ app.add_middleware(
 UPLOAD_DIR = "uploaded_pdfs"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-
+class GenerateRequest(BaseModel):
+    resume_sections: dict
+    job_description: str
+    summaries: list
     
 
 
@@ -56,18 +60,24 @@ async def upload(
         await file.close()
 
     try:
-        result = await main(file_path, cleaned_jd)
-
+        result=await main(file_path,cleaned_jd)
+    
+        
+            
         return {
-            "interview_id": result["interview_id"],
-            "total_questions": result["total_questions"]
+            "success": True,
+            "result":result,
+            "job_description": cleaned_jd
         }
 
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail=f"Interview creation failed: {str(e)}"
+            detail=f"Resume processing failed: {str(e)}"
         )
+
+    finally:
+        await file.close()
     
     
 @app.get("/interview/{interview_id}/next-question")
@@ -130,3 +140,26 @@ async def submit_audio(
 
         if os.path.exists(audio_path):
             os.remove(audio_path)
+            
+            
+@app.get("/evaluate/interview/{interview_id}")
+async def evaluate_candidate(interview_id:str):
+    try:
+        evals=evaluate_candidate_response(interview_id)
+        out=clear_database(interview_id)
+        return evals
+    
+    except Exception as e:
+        raise HTTPException(
+                    status_code=500,
+                    detail=str(e)
+                )
+                
+        
+        
+            
+
+
+
+            
+
