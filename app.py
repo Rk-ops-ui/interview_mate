@@ -5,6 +5,9 @@ from project_main import get_next_question,save_candidate_response,speech_to_tex
 from fastapi.middleware.cors import CORSMiddleware
 import json
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from pathlib import Path
 app = FastAPI(title='Ai based interview agent')
 
 import tempfile
@@ -24,6 +27,27 @@ class GenerateRequest(BaseModel):
     job_description: str
     summaries: list
     
+    
+# Frontend build directory
+BASE_DIR = Path(__file__).resolve().parent
+FRONTEND_DIST = BASE_DIR / "careercoach-frontend" / "dist"
+
+# Serve static assets
+app.mount(
+    "/assets",
+    StaticFiles(directory=FRONTEND_DIST / "assets"),
+    name="assets"
+)
+
+# Serve React frontend
+@app.get("/{full_path:path}")
+async def serve_frontend(full_path: str):
+    requested_file = FRONTEND_DIST / full_path
+
+    if requested_file.is_file():
+        return FileResponse(requested_file)
+
+    return FileResponse(FRONTEND_DIST / "index.html")
 
 
 

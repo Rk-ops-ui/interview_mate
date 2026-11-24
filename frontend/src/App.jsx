@@ -22,8 +22,7 @@ import CompressionReport from "./CompressionReport";
 
 // Change this if your FastAPI server runs at another address.
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 
 
 
