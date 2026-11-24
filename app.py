@@ -30,7 +30,7 @@ class GenerateRequest(BaseModel):
     
 # Frontend build directory
 BASE_DIR = Path(__file__).resolve().parent
-FRONTEND_DIST = BASE_DIR / "careercoach-frontend" / "dist"
+FRONTEND_DIST = BASE_DIR / "frontend" / "dist"
 
 # Serve static assets
 app.mount(
