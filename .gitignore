@@ -122,3 +122,5 @@ docker-compose.override.yml
 *.bak
 *.sqlite
 *.sqlite3
+
+output.txt

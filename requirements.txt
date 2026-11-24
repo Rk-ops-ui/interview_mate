@@ -1,34 +1,20 @@
-fastapi
-uvicorn[standard]
-python-multipart
 
-# Configuration and validation
-pydantic
+numpy
+pymupdf
 python-dotenv
-
-# Resume / PDF processing
-PyMuPDF
-
-# LangChain + Gemini
-langchain
-langchain-core
 langchain-google-genai
-
-# Hugging Face embeddings and summarization (BART)
-langchain-huggingface
-sentence-transformers
-transformers
-torch
-
-# Vector database
+langchain-core
 pinecone
-langchain-pinecone
-
-# Speech-to-text
-faster-whisper
-
-# Similarity / evaluation utilities
-scikit-learn
-
-# MySQL connectivity
+pypdf
+langchain-text-splitters
+langchain
 mysql-connector-python
+pydantic
+faster-whisper
+scikit-learn
+langchain-huggingface
+torch
+fastapi
+uvicorn
+python-multipart
+tiktoken
